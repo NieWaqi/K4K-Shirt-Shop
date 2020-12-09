@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@ViewData["Title"] - T_Shirt_Shop_K4</title>
+
+    <link rel="stylesheet" href="~/css/site.css"/>
+    <link rel="stylesheet" href="~/css/materialize.css">
+    <script src="~/js/materialize.js"></script>
+    <script src="js/jquery-3.4.1.intellisense.js"></script>
+    <script src="js/jquery-3.4.1.js"></script>
+    <script src="js/jquery-3.4.1.slim.js"></script>
+    <script src="js/jquery.validate-vsdoc.js"></script>
+    <script> 
+    $(document).ready(function(){
+                 $('.materialboxed').materialbox();
+               });
+               </script>
+</head>
+<body>
+<header>
+    <nav>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="nav-wrapper deep-purple .deep-purple.accent-4">
+                <h5 href="#" class="brand-logo center">K4K Shirt Shop</h5>
+                <ul id="nav-mobile" class="right smaller-on-med-and-down">
+                    @* <li style="padding-right: 20px">@Html.ActionLink("Settings", "UserSettings", "Blog")</li> *@
+
+                    <li style="padding-right: 20px">
+                        @* <form method="post" action="../Account/LogOut"> *@
+                        @*     <input type="submit" value="LogOut" class="green btn .light-green.accent-3"/> *@
+                        @* </form> *@
+                    </li>
+
+                </ul>
+                <ul id="nav-mobile" class="left smaller-on-med-and-down">
+                    <li>@Html.ActionLink("Store", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Shopping cart", "Privacy", "Home")</li>
+                </ul>
+            </div>
+        }
+        else
+        {
+            <div class="nav-wrapper deep-purple .deep-purple.accent-4">
+                <h5 href="#" class="brand-logo center">K4K Shirt Shop</h5>
+                <ul id="nav-mobile" class="right smaller-on-med-and-down">
+                    @* <li style="padding-right: 20px">@Html.ActionLink("Settings", "UserSettings", "Blog")</li> *@
+
+                    <li style="padding-right: 20px">
+                        @* <form method="post" action="../Account/LogOut"> *@
+                        @*     <input type="submit" value="LogOut" class="green btn .light-green.accent-3"/> *@
+                        @* </form> *@
+                    </li>
+
+                </ul>
+                <ul id="nav-mobile" class="left smaller-on-med-and-down">
+                    <li>@Html.ActionLink("Store", "Index", "Home")</li>
+                </ul>
+
+                <ul id="nav-mobile" class="right smaller-on-med-and-down">
+                    <li>@Html.ActionLink("Login", "Login", "Account")</li>
+                    <li>@Html.ActionLink("Registration", "Register", "Account")</li>
+                </ul>
+            </div>
+        }
+    </nav>
+</header>
+
+<div class="container">
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+</div>
+
+<script src="~/js/site.js" asp-append-version="true"></script>
+@RenderSection("Scripts", required: false)
+</body>
+</html>

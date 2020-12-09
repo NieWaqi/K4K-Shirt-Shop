@@ -1,0 +1,171 @@
+﻿body {
+    -webkit-font-smoothing: antialiased;
+    background: -webkit-linear-gradient(90deg, #2cf5e2 10%, #003fef 90%);
+    background: linear-gradient(90deg, #2cf5e2 10%, #003fef 90%);
+    background: -ms-linear-gradient(90deg, #2cf5e2 10%, #003fef 90%);
+    background: -moz-linear-gradient(90deg, #2cf5e2 10%, #003fef 90%);
+    background: -o-linear-gradient(90deg, #2cf5e2 10%, #003fef 90%);
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/*input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+}*/
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+input {
+    outline: none;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: inset 0 0 0 50px #4a148c !important; /* Цвет фона */
+    -webkit-text-fill-color: #ede7f6 !important; /* цвет текста */
+    color: #ede7f6 !important; /* цвет текста */
+}
+
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+
+.indent-top {
+    padding-top: 50px;
+}
+
+.textButton {
+    background: none !important;
+    border: none;
+    padding: 0 !important;
+    /*optional*/
+    font-family: arial, sans-serif;
+    /*input has OS specific font-family*/
+    color: #069;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 900px) {
+    .row .col.m2 {
+        width: 100% !important;
+        margin-left: auto !important;
+        left: auto !important;
+        right: auto !important;
+    }
+
+    a {
+        cursor: pointer;
+    }
+
+    .more {
+        display: none;
+    }
+
+    .post-text {
+        font-size: 24px;
+    }
+
+    .login-text {
+        font-size: 24px !important;
+    }
+
+    .lightLabel {
+        color: #ede7f6 !important;
+    }
+
+    @media only screen and (max-width: 500px) {
+        .brand-logo {
+            left: 15% !important;
+            display: none !important;
+        }
+    }
+
+    /*clear space */
+    .clear, .clear-10, .clear-15 {
+        clear: both;
+        height: 0;
+        overflow: hidden; /* Précaution pour IE 7 */
+    }
+
+    .clear-10 {
+        margin-bottom: 10px
+    }
+
+    .clear-15 {
+        margin-bottom: 15px
+    }
+
+    .clear-30 {
+        margin-bottom: 30px
+    }
+
+    .avatarLiHelper {
+        padding-bottom: 16px !important;
+        min-height: 0 !important;
+        background-color: initial !important; /*#d1c4e9 !important*/
+    }
+
+    .downbarCircleHelper {
+        height: 40px !important;
+        width: 40px !important;
+        margin-left: 20px;
+        margin-top: 5px;
+    }
+
+    nav ul a:hover {
+        background-color: #4CAF50 !important;
+    }
+
+    .avatarUlHelper {
+        border: none !important;
+    }
+
+    .avatarCircleHelper {
+        width: 60px !important;
+        height: 60px !important;
+        left: 0 !important;
+    }
+
+    ul.dropdown-content > li {
+        position: relative;
+    }
+
+    li ul {
+        display: none;
+    }
+
+    li:hover > ul {
+        display: block;
+        position: absolute;
+    }
+
+    li:hover li {
+        float: none;
+    }
+
+    .dropdown-content li ul li {
+        border-top: 0;
+    }
+
+    ul ul {
+        left: 100%;
+        top: 0;
+    }
+
+    .dropdown-content li:hover .nested {
+        display: block;
+        position: absolute;
+        top: 0;
+    }
+}
+
+/**/

@@ -1,0 +1,31 @@
+﻿@model LoginVIewModel
+
+@{
+    Layout = "_Layout";
+}
+
+<h2>Login in your account</h2>
+<form method="post" asp-controller="Account" asp-action="Login" asp-route-returnUrl="@Model.ReturnUrl">
+    <div asp-validation-summary="ModelOnly"></div>
+    <div class="input-field col s12">
+        <label asp-for="Email"></label><br/>
+        <input class="validate" asp-for="Email"/>
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div class="input-field col s12">
+        <label asp-for="Password"></label><br/>
+        <input class="validate" asp-for="Password"/>
+        <span asp-validation-for="Password"></span>
+    </div>
+    <p>
+        <label asp-for="RememberMe">
+            <input type="checkbox" asp-for="RememberMe"/>
+            <span>Remember me</span>
+        </label><br/>
+    </p>
+    <div class="input-field col s12 center">
+        <button type="submit" value="Create" class="purple btn .light-purple.accent-3 waves-effect waves-light">
+            Login
+        </button>
+    </div>
+</form>

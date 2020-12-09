@@ -1,0 +1,30 @@
+﻿@model T_Shirt_Shop_K4.Models.RegisterViewModel
+
+@{
+    Layout = "_Layout";
+}
+
+<h2 class="center">New user registration</h2>
+<form method="post" asp-controller="Account" asp-action="Register">
+    <div asp-validation-summary="ModelOnly"></div>
+    <div class="input-field col s12">
+        <label asp-for="Email"></label><br/>
+        <input class="validate" asp-for="Email"/>
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div class="input-field col s12">
+        <label asp-for="Password"></label><br/>
+        <input class="validate" asp-for="Password"/>
+        <span asp-validation-for="Password"></span>
+    </div>
+    <div class="input-field col s12">
+        <label asp-for="PasswordConfirm"></label><br/>
+        <input class="validate" asp-for="PasswordConfirm"/>
+        <span asp-validation-for="PasswordConfirm"></span>
+    </div>
+    <div class="input-field col s12 center">
+        <button type="submit" value="Create" class="purple btn .light-purple.accent-3 waves-effect waves-light">
+            Register
+        </button>
+    </div>
+</form>

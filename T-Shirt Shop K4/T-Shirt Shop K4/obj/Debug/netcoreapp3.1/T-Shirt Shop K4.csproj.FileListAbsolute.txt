@@ -1,0 +1,94 @@
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\T-Shirt Shop K4.StaticWebAssets.xml
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\T-Shirt Shop K4.exe
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\T-Shirt Shop K4.deps.json
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\T-Shirt Shop K4.runtimeconfig.json
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\T-Shirt Shop K4.runtimeconfig.dev.json
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\T-Shirt Shop K4.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\T-Shirt Shop K4.pdb
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\T-Shirt Shop K4.Views.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\T-Shirt Shop K4.Views.pdb
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.UI.Views.V3.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.UI.Views.V4.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.UI.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Embedded.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\Microsoft.Identity.Client.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\obj\Debug\netcoreapp3.1\T-Shirt Shop K4.csprojAssemblyReference.cache
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\obj\Debug\netcoreapp3.1\T-Shirt Shop K4.AssemblyInfoInputs.cache
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\obj\Debug\netcoreapp3.1\T-Shirt Shop K4.AssemblyInfo.cs
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\obj\Debug\netcoreapp3.1\T-Shirt Shop K4.csproj.CoreCompileInputs.cache
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\obj\Debug\netcoreapp3.1\T-Shirt Shop K4.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\obj\Debug\netcoreapp3.1\T-Shirt Shop K4.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\obj\Debug\netcoreapp3.1\T-Shirt Shop K4.RazorAssemblyInfo.cache
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\obj\Debug\netcoreapp3.1\T-Shirt Shop K4.RazorAssemblyInfo.cs
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\obj\Debug\netcoreapp3.1\staticwebassets\T-Shirt Shop K4.StaticWebAssets.Manifest.cache
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\obj\Debug\netcoreapp3.1\staticwebassets\T-Shirt Shop K4.StaticWebAssets.xml
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\obj\Debug\netcoreapp3.1\scopedcss\bundle\T-Shirt Shop K4.styles.css
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\obj\Debug\netcoreapp3.1\T-Shirt Shop K4.TagHelpers.input.cache
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\obj\Debug\netcoreapp3.1\T-Shirt Shop K4.TagHelpers.output.cache
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\obj\Debug\netcoreapp3.1\T-Shirt Shop K4.RazorCoreGenerate.cache
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\obj\Debug\netcoreapp3.1\T-Shirt Shop K4.RazorTargetAssemblyInfo.cache
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\obj\Debug\netcoreapp3.1\T-Shirt Shop K4.RazorTargetAssemblyInfo.cs
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\obj\Debug\netcoreapp3.1\T-Shirt Shop K4.Views.pdb
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\obj\Debug\netcoreapp3.1\T-Shirt Shop K4.csproj.CopyComplete
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\obj\Debug\netcoreapp3.1\T-Shirt Shop K4.dll
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\obj\Debug\netcoreapp3.1\T-Shirt Shop K4.pdb
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\obj\Debug\netcoreapp3.1\T-Shirt Shop K4.genruntimeconfig.cache
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
+C:\Users\peron\Desktop\kursach4\T-Shirt Shop K4\T-Shirt Shop K4\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
