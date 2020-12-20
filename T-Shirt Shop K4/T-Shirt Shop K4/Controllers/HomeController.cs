@@ -5,22 +5,33 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using T_Shirt_Shop_K4.Data;
 using T_Shirt_Shop_K4.Models;
 
 namespace T_Shirt_Shop_K4.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private ApplicationContext db;
+        public HomeController(ApplicationContext context)
         {
-            _logger = logger;
+            db = context;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int id = 1)
         {
-            return View();
+            var model = new MainProductsViewModell
+            {
+                Products = db.Products
+                    .Skip(36 * (id - 1))
+                    .Take(36)
+                    .ToList(),
+
+                CurrentPage = id,
+                MaxPages = ((int)db.Products.Count() / 36) + 1
+            };
+            
+            return View(model);
         }
 
         public IActionResult Privacy()

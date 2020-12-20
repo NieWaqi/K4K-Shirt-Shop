@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using T_Shirt_Shop_K4.Models;
@@ -10,6 +12,8 @@ namespace T_Shirt_Shop_K4.Controllers
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
 
+        private string GetCurrentUserIdAsync() => _userManager.GetUserId(HttpContext.User);
+        
         public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
         {
             _userManager = userManager;
@@ -17,13 +21,13 @@ namespace T_Shirt_Shop_K4.Controllers
         }
 
         // GET
-        [HttpGet]
+        [HttpGet("Register")]
         public IActionResult Register()
         {
             return View();
         }
 
-        [HttpPost]
+        [HttpPost("Register")]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
@@ -44,16 +48,17 @@ namespace T_Shirt_Shop_K4.Controllers
                 }
             }
 
-            return View(model);
+            RedirectToAction("Register", model);
+            return Ok("200. Registration completed successfully");
         }
 
-        [HttpGet]
+        [HttpGet("Login")]
         public IActionResult Login(string returnUrl = null)
         {
             return View(new Models.LoginVIewModel {ReturnUrl = returnUrl});
         }
 
-        [HttpPost]
+        [HttpPost("Login")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(Models.LoginVIewModel model)
         {
@@ -77,16 +82,32 @@ namespace T_Shirt_Shop_K4.Controllers
                     ModelState.AddModelError("", "Wrong login or password");
                 }
             }
-
-            return View(model);
+            RedirectToAction("Login", model);
+            return Ok("200. Login completed successfully");
         }
 
-        [HttpPost]
+        [HttpPost("Logout")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet("Info")]
+        [Authorize]
+        public IActionResult Info()
+        {
+            var curUser = _userManager.Users.Single(w => w.Id == GetCurrentUserIdAsync());
+
+            var userModel = new UserViewModel
+            {
+                Email = curUser.Email,
+                Name = curUser.name,
+                Phone = curUser.PhoneNumber
+            };
+            
+            return View(userModel);
         }
     }
 }

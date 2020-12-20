@@ -1,4 +1,5 @@
-﻿@{
+﻿@model MainProductsViewModell
+@{
     ViewData["Title"] = "Home Page";
     Layout = "_Layout";
 }
@@ -6,78 +7,110 @@
 <script >
 M.AutoInit();
 </script>
+
 <div class="row">
-    <div class="col s12 m2">
-        <div class="card">
-            <div class="card-image">
-                <img class="materialboxed" src="~/lib/Images/shirt1.png" alt="shirt image" style="width: 190px; height: 190px">
-            </div>
-            <div class="card-content">
-                <p>
-                    Black Shirt
-                </p>
-                <p>
-                    <b>100$</b>
-                </p>
-            </div>
-            <div class="center card-action">
-                <a class="waves-effect waves-light btn-small">Add to cart</a>
-            </div>
-        </div>
-    </div>
-    <div class="col s12 m2">
-        <div class="card">
-            <div class="card-image">
-                <img class="materialboxed" src="~/lib/Images/shirt3.png" alt="shirt image" style="width: 190px; height: 190px">
-            </div>
-            <div class="card-content">
-                <p>
-                    Black Shirt
-                </p>
-                <p>
-                    <b>100$</b>
-                </p>
-            </div>
-            <div class="center card-action">
-                <a class="waves-effect waves-light btn-small">Add to cart</a>
-            </div>
-        </div>
-    </div>
-    <div class="col s12 m2">
-        <div class="card">
-            <div class="card-image">
-                <img class="materialboxed" src="~/lib/Images/shirt2.png" alt="shirt image" style="width: 190px; height: 190px">
-            </div>
-            <div class="card-content">
-                <p>
-                    White Shirt
-                </p>
-                <p>
-                    <b>500$</b>
-                </p>
-            </div>
-            <div class="center card-action">
-                <a class="waves-effect waves-light btn-small">Add to cart</a>
+
+    @foreach (var prod in Model.Products)
+    {
+        <div class="col s12 m2">
+            <div class="card">
+                <div class="card-image">
+                    <img class="materialboxed" src="~/lib/Images/shirt1.png" alt="shirt image" style="width: 190px; height: 190px">
+                </div>
+                <div class="card-content">
+                    <p>
+                        @prod.Name
+                    </p>
+                    <p>
+                        <b>@prod.Cost</b>
+                    </p>
+                </div>
+                <div class="center card-action">
+                    @*<a class="waves-effect waves-light btn-small">Add to cart</a>*@
+                    <!-- Modal Trigger -->
+                    <a class="waves-effect waves-light btn modal-trigger" href=@("#modal" + prod.Id)>Select</a>
+
+                    <!-- Modal Structure -->
+                    <div id=@("modal" + prod.Id) class="modal">
+                        <div class="modal-content">
+                            <h4>@prod.Name</h4>
+                            <p>@prod.Description</p>
+                            <p>
+                                <input value=@(prod.Cost + "$")>
+                            </p>
+                            <div class="col m8 offset-m2 s12 z-depth-2">
+                                <input value="1" type="number" onchange="nChanged()" min="1" max="500" name="amount" id="amount" class="validate">
+                                <label for="amount" data-error="Invalid number">Amount</label>
+                                <p type="text" id="tot_amount" readonly value="123">Total price: @(prod.Cost + "$")</p>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#!" class="modal-close waves-effect waves-green btn-small">Add to cart</a>
+                        </div>
+                        <br>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col s12 m2">
-        <div class="card">
-            <div class="card-image">
-                <img class="materialboxed" src="~/lib/Images/shirt4.png" alt="shirt image" style="width: 190px; height: 190px">
-            </div>
-            <div class="card-content">
-                <p>
-                    Grey shirt
-                </p>
-                <p>
-                    <b>500$</b>
-                </p>
-            </div>
-            <div class="center card-action">
-                <a class="waves-effect waves-light btn-small">Add to cart</a>
-            </div>
-        </div>
-    </div>
-    <script >M.AutoInit();</script>
+    }
 </div>
+<div class="center">
+    <ul class="pagination">
+        <li class="disabled">
+            <a href="#!">
+                <i class="material-icons"><</i>
+            </a>
+        </li>
+        @if (Model.CurrentPage > 5)
+        {
+            @for (long num = Model.CurrentPage - 5; num <= Model.MaxPages && num <= Model.CurrentPage + 5; num++)
+            {
+                @if (num == Model.CurrentPage)
+                {
+                    <li class="active">
+                        <a href="#!">@num</a>
+                    </li>
+                }
+                else
+                {
+                    <li class="waves-effect">
+                        <a href="#!">@num</a>
+                    </li>
+                }
+            }
+        }
+        else
+        {
+            @for (long num = 1; num <= Model.MaxPages && num <= 10; num++)
+            {
+                @if (num == Model.CurrentPage)
+                {
+                    <li class="active">
+                        <a href="#!">@num</a>
+                    </li>
+                }
+                else
+                {
+                    <li class="waves-effect">
+                        <a href="#!">@num</a>
+                    </li>
+                }
+            }
+        }
+        <li class="waves-effect">
+            <a href="#!">
+                <i class="material-icons">></i>
+            </a>
+        </li>
+    </ul>
+</div>
+<script >
+    function nChanged(){
+    $(":input").bind('keyup mouseup', function () {
+        let price = $(this).parent().prev().children().val();
+        price = price.slice(0, price.length)
+        $(this).next().next().text("Total price: " + (parseInt($(this).val()) * parseInt(price))+ "$")
+    })
+    }
+    </script>
+<script >M.AutoInit();</script>

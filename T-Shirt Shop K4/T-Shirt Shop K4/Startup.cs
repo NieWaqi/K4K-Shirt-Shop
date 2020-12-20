@@ -27,6 +27,8 @@ namespace T_Shirt_Shop_K4
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers();
+            
             services.AddDbContext<ApplicationContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
@@ -34,16 +36,29 @@ namespace T_Shirt_Shop_K4
                 .AddEntityFrameworkStores<ApplicationContext>();
 
             services.AddControllersWithViews();
+            
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder =>
+                    {
+                        builder.AllowAnyOrigin()
+                            .AllowAnyMethod()
+                            .AllowAnyHeader();
+                    });
+            });
+            services.AddSwaggerGen(); // swagg
         }
 
         public void Configure(IApplicationBuilder app)
-        {
+        {   
             app.UseDeveloperExceptionPage();
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseCors();
 
             app.UseAuthentication(); // подключение аутентификации
             app.UseAuthorization();
@@ -53,6 +68,14 @@ namespace T_Shirt_Shop_K4
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+            });
+            
+            app.UseSwagger();
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
         }
     }
