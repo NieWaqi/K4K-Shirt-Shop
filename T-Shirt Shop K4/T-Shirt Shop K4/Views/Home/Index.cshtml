@@ -31,24 +31,37 @@ M.AutoInit();
                     <a class="waves-effect waves-light btn modal-trigger" href=@("#modal" + prod.Id)>Select</a>
 
                     <!-- Modal Structure -->
-                    <div id=@("modal" + prod.Id) class="modal">
-                        <div class="modal-content">
-                            <h4>@prod.Name</h4>
-                            <p>@prod.Description</p>
-                            <p>
-                                <input value=@(prod.Cost + "$")>
-                            </p>
-                            <div class="col m8 offset-m2 s12 z-depth-2">
-                                <input value="1" type="number" onchange="nChanged()" min="1" max="500" name="amount" id="amount" class="validate">
-                                <label for="amount" data-error="Invalid number">Amount</label>
-                                <p type="text" id="tot_amount" readonly value="123">Total price: @(prod.Cost + "$")</p>
+                    @using (Html.BeginForm("MakeOrder", "Purchase", FormMethod.Post))
+                    {
+                        <div id=@("modal" + prod.Id) class="modal">
+                            <div class="modal-content">
+                                <h4>@prod.Name</h4>
+                                <p>@prod.Description</p>
+                                <p>
+                                    <input value=@(prod.Cost + "$")>
+                                </p>
+                                <div class="col m8 offset-m2 s12 z-depth-2">
+                                    <input name="Quantity" value="1" type="number" onchange="nChanged()" min="1" max="500" id="amount" class="validate">
+                                    <label for="amount" data-error="Invalid number">Amount</label>
+                                    <p type="text" id="tot_amount" readonly value="123">Total price: @(prod.Cost + "$")</p>
+                                </div>
                             </div>
+                            <div class="modal-footer">
+                                @*<a href="#!" class="modal-close waves-effect waves-green btn-small">Add to cart</a>*@
+                                @if (!User.Identity.IsAuthenticated)
+                                {
+                                    
+                                }
+                                else
+                                {
+                                    <button type="submit" value="Create" class="purple btn .light-purple.accent-3 waves-effect waves-light">
+                                        Add to card
+                                    </button>
+                                }
+                            </div>
+                            <br>
                         </div>
-                        <div class="modal-footer">
-                            <a href="#!" class="modal-close waves-effect waves-green btn-small">Add to cart</a>
-                        </div>
-                        <br>
-                    </div>
+                    }
                 </div>
             </div>
         </div>

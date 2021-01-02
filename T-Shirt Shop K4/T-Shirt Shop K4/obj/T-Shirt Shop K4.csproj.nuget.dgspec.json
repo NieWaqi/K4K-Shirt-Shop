@@ -14,7 +14,7 @@
         "outputPath": "C:\\Users\\peron\\Desktop\\kursach4\\K4K-Shirt-Shop\\T-Shirt Shop K4\\T-Shirt Shop K4\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Microsoft\\Xamarin\\NuGet"
         ],
         "configFilePaths": [
           "C:\\Users\\peron\\AppData\\Roaming\\NuGet\\NuGet.Config",

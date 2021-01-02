@@ -1,0 +1,47 @@
+﻿@model List<Order>
+
+@{
+    Layout = "_Layout";
+}
+<h1 class="center">Your orders</h1>
+<div class="row container" style="min-height:100vh">
+    <div class="col s12">
+        <div class="col m12 z-depth-2 white darken-4">
+            <table>
+                <thead>
+                <tr>
+                    <th>Item name</th>
+                    <th>Item quantity</th>
+                    <th>Order price</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                @foreach (var order in Model)
+                {
+                    <tr>
+                        <td>@order.Product.Name</td>
+                        <td>@order.Quantity.ToString()</td>
+                        <td>@(order.Product.Cost * order.Quantity)</td>
+                    </tr>
+                }
+                <tr>
+                    <td>Alvin</td>
+                    <td>Eclair</td>
+                    <td>$0.87</td>
+                </tr>
+                <tr>
+                    <td>Alan</td>
+                    <td>Jellybean</td>
+                    <td>$3.76</td>
+                </tr>
+                <tr>
+                    <td>Jonathan</td>
+                    <td>Lollipop</td>
+                    <td>$7.00</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

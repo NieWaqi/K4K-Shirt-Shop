@@ -191,4 +191,5 @@ C:\Users\peron\Desktop\kursach4\K4K-Shirt-Shop\T-Shirt Shop K4\T-Shirt Shop K4\b
 C:\Users\peron\Desktop\kursach4\K4K-Shirt-Shop\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\peron\Desktop\kursach4\K4K-Shirt-Shop\T-Shirt Shop K4\T-Shirt Shop K4\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\peron\Desktop\kursach4\K4K-Shirt-Shop\T-Shirt Shop K4\T-Shirt Shop K4\obj\Debug\netcoreapp3.1\Razor\Views\Account\Info.cshtml.g.cs
-C:\Users\peron\Desktop\kursach4\K4K-Shirt-Shop\T-Shirt Shop K4\T-Shirt Shop K4\obj\Debug\netcoreapp3.1\Razor\Pages\Purchase\Card.cshtml.g.cs
+C:\Users\peron\Desktop\kursach4\K4K-Shirt-Shop\T-Shirt Shop K4\T-Shirt Shop K4\obj\Debug\netcoreapp3.1\Razor\Views\Purchase\Card.cshtml.g.cs
+C:\Users\peron\Desktop\kursach4\K4K-Shirt-Shop\T-Shirt Shop K4\T-Shirt Shop K4\obj\Debug\netcoreapp3.1\Razor\Views\Purchase\MakeOrder.cshtml.g.cs
