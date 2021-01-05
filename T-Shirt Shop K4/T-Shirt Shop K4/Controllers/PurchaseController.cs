@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using T_Shirt_Shop_K4.Models;
+using T_Shirt_Shop_K4.Shared.Enums;
 
 namespace T_Shirt_Shop_K4.Controllers
 {
@@ -26,11 +28,24 @@ namespace T_Shirt_Shop_K4.Controllers
         }
 
         [HttpPost]
-        public string MakeOrder(string Quantity)
+        public string MakeOrder(int? ProductId, string Quantity)
         {
+            Order order = new Order
+            {
+                //TODO: Address
+                Address = "TestAddress",
+                Product = db.Products.FirstOrDefault(w => w.Id == ProductId),
+                Quantity = Convert.ToInt32(Quantity),
+                User = _userManager.Users.Single(w => w.Id == GetCurrentUserIdAsync()),
+                OrderDate = DateTime.UtcNow,
+                OrderStatus = Enums.OrderStatus.Unpaid
+            };
+            
+            db.Orders.Add(order);
 
+            db.SaveChanges();
 
-            return Quantity;
+            return "Success";
         }
     }
 }

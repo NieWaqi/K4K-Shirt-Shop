@@ -31,7 +31,7 @@ M.AutoInit();
                     <a class="waves-effect waves-light btn modal-trigger" href=@("#modal" + prod.Id)>Select</a>
 
                     <!-- Modal Structure -->
-                    @using (Html.BeginForm("MakeOrder", "Purchase", FormMethod.Post))
+                    @using (Html.BeginForm("MakeOrder", "Purchase", routeValues: new {ProductId = prod.Id.ToString()}, FormMethod.Post))
                     {
                         <div id=@("modal" + prod.Id) class="modal">
                             <div class="modal-content">
