@@ -12,6 +12,8 @@ namespace T_Shirt_Shop_K4.Models
         
         public Enums.OrderStatus OrderStatus { get; set; }
         public User User { get; set; }
+        
+        public long ProductId { get; set; }
         public Product Product { get; set; }
         public int Quantity { get; set; }
     }

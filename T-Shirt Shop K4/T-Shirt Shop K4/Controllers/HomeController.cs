@@ -18,16 +18,17 @@ namespace T_Shirt_Shop_K4.Controllers
             db = context;
         }
 
-        public IActionResult Index(int id = 1)
+        [HttpGet]
+        public IActionResult Index(int? id = 1)
         {
             var model = new MainProductsViewModell
             {
                 Products = db.Products
-                    .Skip(36 * (id - 1))
+                    .Skip(36 * (Convert.ToInt32(id - 1)))
                     .Take(36)
                     .ToList(),
 
-                CurrentPage = id,
+                CurrentPage = Convert.ToInt32(id),
                 MaxPages = ((int)db.Products.Count() / 36) + 1
             };
             

@@ -1,4 +1,5 @@
-﻿@model List<Order>
+﻿@using System.Globalization
+@model List<Order>
 
 @{
     Layout = "_Layout";
@@ -13,6 +14,9 @@
                     <th>Item name</th>
                     <th>Item quantity</th>
                     <th>Order price</th>
+                    <th>Order status</th>
+                    <th>Quantity</th>
+                    <th>Delete</th>
                 </tr>
                 </thead>
 
@@ -22,26 +26,42 @@
                     <tr>
                         <td>@order.Product.Name</td>
                         <td>@order.Quantity.ToString()</td>
-                        <td>@(order.Product.Cost * order.Quantity)</td>
+                        <td>@((order.Product.Cost * order.Quantity).ToString(CultureInfo.InvariantCulture))$</td>
+                        <td>@order.OrderStatus.ToString()</td>
+                        <td>
+                            <a class="waves-effect waves-light btn modal-trigger" href=@("#modal" + order.Id)>Change quantity</a>
+
+                            @using (Html.BeginForm("ChangeQuantity", "Purchase", routeValues: new {id = order.Id.ToString()}, FormMethod.Post))
+                            {
+                                <div id=@("modal" + order.Id) class="modal">
+                                    <div class="modal-content">
+                                        <h4>Change quantity</h4>
+                                        <input name="quantity" type="number" min="1" max="500" class="validate">
+                                    </div>
+                                    <button type="submit" value="Create" class="btn right green waves-effect waves-light">
+                                        Update
+                                    </button>
+                                    <div class="modal-footer">
+                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+                                    </div>
+                                </div>
+                            }
+                        </td>
+                        <td>
+                            @using (Html.BeginForm("DeleteOrder", "Purchase", routeValues: new {id = order.Id.ToString()}, FormMethod.Post))
+                            {
+                                <button type="submit" value="Create" class="btn red waves-effect waves-light">
+                                    Delete
+                                </button>
+                            }
+                        </td>
                     </tr>
                 }
-                <tr>
-                    <td>Alvin</td>
-                    <td>Eclair</td>
-                    <td>$0.87</td>
-                </tr>
-                <tr>
-                    <td>Alan</td>
-                    <td>Jellybean</td>
-                    <td>$3.76</td>
-                </tr>
-                <tr>
-                    <td>Jonathan</td>
-                    <td>Lollipop</td>
-                    <td>$7.00</td>
-                </tr>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
+<script >
+M.AutoInit();
+</script>
