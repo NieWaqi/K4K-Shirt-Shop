@@ -11,6 +11,7 @@ namespace T_Shirt_Shop_K4.Controllers
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
+        private readonly RoleManager<User> _roleManager;
 
         private string GetCurrentUserIdAsync() => _userManager.GetUserId(HttpContext.User);
         
@@ -37,6 +38,7 @@ namespace T_Shirt_Shop_K4.Controllers
                 if (result.Succeeded)
                 {
                     await _signInManager.SignInAsync(user, false);
+                    await _userManager.AddToRoleAsync(user, "user");
                     return RedirectToAction("Index", "Home");
                 }
                 else

@@ -1,0 +1,147 @@
+﻿@model List<User>
+
+@{
+    Layout = "_Layout";
+}
+
+<div class="row container" style="min-height:100vh">
+    <div class="col s12">
+        <div class="col m12 z-depth-2 white darken-4">
+            <div class="input-field">
+                @using (Html.BeginForm("Select", "Admin", FormMethod.Get))
+                {
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>
+                                <label>Select data</label>
+                                <select name="selected">
+                                    <option value="" disabled selected>Choose your option</option>
+                                    <option value="users">Users</option>
+                                    <option value="products">Products</option>
+                                    <option value="orders">Orders</option>
+                                </select>
+                            </th>
+                            <th>
+                                <button class="btn waves-effect waves-light" type="submit" name="action">
+                                    Show
+                                </button>
+                            </th>
+                        </tr>
+                        </thead>
+                    </table>
+                }
+                @using (Html.BeginForm("ShowUsers", "Admin", FormMethod.Get))
+                {
+                    <table>
+                        <tr>
+                            <th>
+                                <label for="loginInput">Login</label>
+                                <input name="login" id="loginInput" type="text">
+                            </th>
+                            <th>
+                                <label for="emailInput">Email</label>
+                                <input name="email" id="emailInput" type="text">
+                            </th>
+                            <th>
+                                <label for="phoneInput">Phone</label>
+                                <input name="phone" id="phoneInput" type="text">
+                            </th>
+                            <th>
+                                <button class="btn waves-effect waves-light" type="submit" name="action">
+                                    Filter
+                                </button>
+                            </th>
+                        </tr>
+                    </table>
+                }
+                <table>
+                    <thead>
+                    <tr>
+                        <th>User EMail</th>
+                        <th>User Login</th>
+                        <th>User Phone</th>
+                        <th>User Age</th>
+                        <th>User Name</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @if (Model.Any())
+                    {
+                        @foreach (var user in Model)
+                        {
+                            <tr>
+                                <td>@user.Email</td>
+                                <td>@user.UserName</td>
+                                <td>
+                                    @if (string.IsNullOrEmpty(user.PhoneNumber))
+                                    {
+                                        @:null
+                                    }
+                                    else
+                                    {
+                                        @:@user.PhoneNumber
+                                    }
+                                </td>
+                                <td>
+                                    @if (user.Age < 0)
+                                    {
+                                        @:null
+                                    }
+                                    else
+                                    {
+                                        @:@user.Age.ToString()
+                                    }
+                                </td>
+                                <td>
+                                    @if (string.IsNullOrEmpty(user.name))
+                                    {
+                                        @:null
+                                    }
+                                    else
+                                    {
+                                        @:@user.name
+                                    }
+                                </td>
+                                @*<td>
+                    <a class="waves-effect waves-light btn modal-trigger" href=@("#modal" + order.Id)>Change quantity</a>
+
+                    @using (Html.BeginForm("ChangeQuantity", "Purchase", routeValues: new {id = order.Id.ToString()}, FormMethod.Post))
+                    {
+                        <div id=@("modal" + order.Id) class="modal">
+                            <div class="modal-content">
+                                <h4>Change quantity</h4>
+                                <input name="quantity" type="number" min="1" max="500" class="validate">
+                            </div>
+                            <button type="submit" value="Create" class="btn right green waves-effect waves-light">
+                                Update
+                            </button>
+                            <div class="modal-footer">
+                                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+                            </div>
+                        </div>
+                    }
+                </td>*@
+                                @*<td>
+                    @using (Html.BeginForm("DeleteOrder", "Purchase", routeValues: new {id = order.Id.ToString()}, FormMethod.Post))
+                    {
+                        <button type="submit" value="Create" class="btn red waves-effect waves-light">
+                            Delete
+                        </button>
+                    }
+                </td>*@
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <h3 class="red-text center">Nothing found</h3>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script > M.AutoInit();</script>
