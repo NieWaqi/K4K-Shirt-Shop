@@ -1,21 +1,27 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using T_Shirt_Shop_K4.Models;
+using T_Shirt_Shop_K4.Shared.Enums;
 
 namespace T_Shirt_Shop_K4.Controllers
 {
     public class AdminController : Controller
     {
         private readonly UserManager<User> _userManager;
-        
-        public AdminController(UserManager<User> userManager)
+        private ApplicationContext db;
+
+        public AdminController(UserManager<User> userManager, ApplicationContext context)
         {
             _userManager = userManager;
+            db = context;
         }
-        
+
         [HttpGet]
         [Authorize(Roles = "admin")]
         public IActionResult Index()
@@ -31,9 +37,19 @@ namespace T_Shirt_Shop_K4.Controllers
             {
                 return RedirectToAction("ShowUsers");
             }
+            if (selected == "orders")
+            {
+                return RedirectToAction("ShowOrders");
+            }
+
+            if (selected == "products")
+            {
+                return RedirectToAction("ShowProducts");
+            }
+
             return null;
         }
-        
+
         [HttpGet]
         [Authorize(Roles = "admin")]
         public IActionResult ShowUsers(string login, string email, string phone)
@@ -51,10 +67,87 @@ namespace T_Shirt_Shop_K4.Controllers
 
             if (!string.IsNullOrEmpty(phone))
             {
-                users = users.Where(w => !string.IsNullOrEmpty( w.PhoneNumber) && w.PhoneNumber.Contains(phone)).ToList();
+                users = users.Where(w => !string.IsNullOrEmpty(w.PhoneNumber) && w.PhoneNumber.Contains(phone))
+                    .ToList();
             }
 
             return View(users);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "admin")]
+        public IActionResult ShowOrders(string login, string productName, string productStatus, DateTime? orderDate)
+        {
+            var orders = db.Orders.ToList();
+
+            if (!string.IsNullOrEmpty(login))
+            {
+                orders = orders.Where(w => w.UserName.ToLower().Contains(login.ToLower())).ToList();
+            }
+
+            if (!string.IsNullOrEmpty(productName))
+            {
+                orders = orders.Where(w => w.ProductName.ToLower().Contains(productName.ToLower())).ToList();
+            }
+
+            if (!string.IsNullOrEmpty(productStatus))
+            {
+                orders = orders.Where(w =>
+                        Enum.GetName(typeof(Enums.OrderStatus), w.OrderStatus).ToLower()
+                            .Contains(productStatus.ToLower()))
+                    .ToList();
+            }
+
+            if (orderDate.HasValue)
+            {
+                DateTime orderDateNn = orderDate.Value;
+                var roundedOrderDate = new DateTime(orderDateNn.Year, orderDateNn.Month, orderDateNn.Day, 0, 0, 0);
+                orders = orders.Where(w =>
+                        new DateTime(w.OrderDate.Year, w.OrderDate.Month, w.OrderDate.Day, 0, 0, 0) == roundedOrderDate)
+                    .ToList();
+            }
+
+            return View(orders);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "admin")]
+        public IActionResult ShowProducts()
+        {
+            var products = db.Products.ToList();
+
+            return View(products);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "admin")]
+        public IActionResult AddProduct(string productName, string productDescription, string productCost,
+            IFormFile productImage)
+        {
+            if (productImage != null && !string.IsNullOrEmpty(productName) &&
+                !string.IsNullOrEmpty(productDescription) && decimal.Parse(productCost.Replace('.',',')) > 0)
+            {
+                byte[] imageData = null;
+
+                using (var binaryReader = new BinaryReader(productImage.OpenReadStream()))
+                {
+                    imageData = binaryReader.ReadBytes(Convert.ToInt32(productImage.Length));
+                }
+
+                Product product = new Product
+                {
+                    Name = productName,
+                    Description = productDescription,
+                    Cost = decimal.Parse(productCost.Replace('.',',')),
+                    Image = imageData
+                };
+
+                db.Products.Add(product);
+
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("ShowProducts");
         }
     }
 }

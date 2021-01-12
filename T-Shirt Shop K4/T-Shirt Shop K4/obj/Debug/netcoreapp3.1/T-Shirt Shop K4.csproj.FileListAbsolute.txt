@@ -195,3 +195,5 @@ C:\Users\peron\Desktop\kursach4\K4K-Shirt-Shop\T-Shirt Shop K4\T-Shirt Shop K4\o
 C:\Users\peron\Desktop\kursach4\K4K-Shirt-Shop\T-Shirt Shop K4\T-Shirt Shop K4\obj\Debug\netcoreapp3.1\Razor\Views\Purchase\MakeOrder.cshtml.g.cs
 C:\Users\peron\Desktop\kursach4\K4K-Shirt-Shop\T-Shirt Shop K4\T-Shirt Shop K4\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Index.cshtml.g.cs
 C:\Users\peron\Desktop\kursach4\K4K-Shirt-Shop\T-Shirt Shop K4\T-Shirt Shop K4\obj\Debug\netcoreapp3.1\Razor\Views\Admin\ShowUsers.cshtml.g.cs
+C:\Users\peron\Desktop\kursach4\K4K-Shirt-Shop\T-Shirt Shop K4\T-Shirt Shop K4\obj\Debug\netcoreapp3.1\Razor\Views\Admin\ShowOrders.cshtml.g.cs
+C:\Users\peron\Desktop\kursach4\K4K-Shirt-Shop\T-Shirt Shop K4\T-Shirt Shop K4\obj\Debug\netcoreapp3.1\Razor\Views\Admin\ShowProducts.cshtml.g.cs

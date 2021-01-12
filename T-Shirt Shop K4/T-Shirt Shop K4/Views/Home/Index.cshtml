@@ -15,7 +15,9 @@ M.AutoInit();
         <div class="col s12 m2">
             <div class="card">
                 <div class="card-image">
-                    <img class="materialboxed" src="~/lib/Images/shirt1.png" alt="shirt image" style="width: 100%">
+                    @* <img class="materialboxed" src="~/lib/Images/shirt1.png" alt="shirt image" style="width: 100%"> *@
+                    @Html.Raw("<img style='width:100%; height:100%; alt=shirt image' class='materialboxed' src=\"data:image/jpeg;base64," 
+                                                                  + Convert.ToBase64String(prod.Image) + "\" />")
                 </div>
                 <div class="card-content">
                     <p>

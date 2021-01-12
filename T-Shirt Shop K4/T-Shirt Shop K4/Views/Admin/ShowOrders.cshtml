@@ -1,0 +1,133 @@
+﻿@model List<Order>
+
+@{
+    Layout = "_Layout";
+}
+
+<div class="row container" style="min-height:100vh">
+    <div class="col s12">
+        <div class="col m12 z-depth-2 white darken-4">
+            <div class="input-field">
+                @using (Html.BeginForm("Select", "Admin", FormMethod.Get))
+                {
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>
+                                <label>Select data</label>
+                                <select name="selected">
+                                    <option value="" disabled selected>Choose your option</option>
+                                    <option value="users">Users</option>
+                                    <option value="products">Products</option>
+                                    <option value="orders">Orders</option>
+                                </select>
+                            </th>
+                            <th>
+                                <button class="btn waves-effect waves-light" type="submit" name="action">
+                                    Show
+                                </button>
+                            </th>
+                        </tr>
+                        </thead>
+                    </table>
+                }
+                @using (Html.BeginForm("ShowOrders", "Admin", FormMethod.Get))
+                {
+                    <table>
+                        <tr>
+                            <th>
+                                <label for="loginInput">Login</label>
+                                <input name="login" id="loginInput" type="text">
+                            </th>
+                            <th>
+                                <label for="productInput">Product Name</label>
+                                <input name="productName" id="productInput" type="text">
+                            </th>
+                            <th>
+                                <label for="orderStatus">Order Status</label>
+                                <select id="orderStatus" name="productStatus">
+                                    <option value="" disabled selected>Choose your option</option>
+                                    <option value="Unpaid">Unpaid</option>
+                                    <option value="Paid">Paid</option>
+                                    <option value="Cancelled">Cancelled</option>
+                                    <option value="Shipped">Shipped</option>
+                                    <option value="Disputed">Disputed</option>
+                                    <option value="AwaitingPickup">AwaitingPickup</option>
+                                    <option value="Received">Received</option>
+                                </select>
+                            </th>
+                            <th>
+                                <label for="orderDate">Order Date</label>
+                                <input id="orderDate" name="orderDate" type="date">
+                            </th>
+                            <th>
+                                <button class="btn waves-effect waves-light" type="submit" name="action">
+                                    Show
+                                </button>
+                            </th>
+                        </tr>
+                    </table>
+                }
+                <table>
+                    <thead>
+                    <tr>
+                        <th>User Name</th>
+                        <th>Product Name</th>
+                        <th>Quantity</th>
+                        <th>Order Status</th>
+                        <th>Order Date</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @if (Model.Any())
+                    {
+                        @foreach (var order in Model)
+                        {
+                            <tr>
+                                <td>@order.UserName</td>
+                                <td>@order.ProductName</td>
+                                <td>@order.Quantity.ToString()</td>
+                                <td>@order.OrderStatus.ToString()</td>
+                                <td>@order.OrderDate.ToString()</td>
+                                @*<td>
+                    <a class="waves-effect waves-light btn modal-trigger" href=@("#modal" + order.Id)>Change quantity</a>
+
+                    @using (Html.BeginForm("ChangeQuantity", "Purchase", routeValues: new {id = order.Id.ToString()}, FormMethod.Post))
+                    {
+                        <div id=@("modal" + order.Id) class="modal">
+                            <div class="modal-content">
+                                <h4>Change quantity</h4>
+                                <input name="quantity" type="number" min="1" max="500" class="validate">
+                            </div>
+                            <button type="submit" value="Create" class="btn right green waves-effect waves-light">
+                                Update
+                            </button>
+                            <div class="modal-footer">
+                                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+                            </div>
+                        </div>
+                    }
+                </td>*@
+                                @*<td>
+                    @using (Html.BeginForm("DeleteOrder", "Purchase", routeValues: new {id = order.Id.ToString()}, FormMethod.Post))
+                    {
+                        <button type="submit" value="Create" class="btn red waves-effect waves-light">
+                            Delete
+                        </button>
+                    }
+                </td>*@
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <h3 class="red-text center">Nothing found</h3>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script > M.AutoInit();</script>

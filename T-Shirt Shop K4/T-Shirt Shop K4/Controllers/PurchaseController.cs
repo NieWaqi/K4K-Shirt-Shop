@@ -43,8 +43,10 @@ namespace T_Shirt_Shop_K4.Controllers
                 Address = "TestAddress",
                 ProductId = (long) ProductId,
                 Product = db.Products.FirstOrDefault(w => w.Id == ProductId),
+                ProductName = db.Products.FirstOrDefault(w => w.Id == ProductId)?.Name,
                 Quantity = Convert.ToInt32(Quantity),
                 User = _userManager.Users.Single(w => w.Id == GetCurrentUserIdAsync()),
+                UserName = _userManager.Users.Single(w => w.Id == GetCurrentUserIdAsync()).UserName,
                 OrderDate = DateTime.UtcNow,
                 OrderStatus = Enums.OrderStatus.Unpaid
             };
