@@ -50,7 +50,7 @@ namespace T_Shirt_Shop_K4.Controllers
             return null;
         }
 
-        [HttpGet]
+        [HttpGet("Show/Users")]
         [Authorize(Roles = "admin")]
         public IActionResult ShowUsers(string login, string email, string phone)
         {
@@ -74,7 +74,7 @@ namespace T_Shirt_Shop_K4.Controllers
             return View(users);
         }
 
-        [HttpGet]
+        [HttpGet("Show/Orders")]
         [Authorize(Roles = "admin")]
         public IActionResult ShowOrders(string login, string productName, string productStatus, DateTime? orderDate)
         {
@@ -110,11 +110,16 @@ namespace T_Shirt_Shop_K4.Controllers
             return View(orders);
         }
 
-        [HttpGet]
+        [HttpGet("Show/Products")]
         [Authorize(Roles = "admin")]
-        public IActionResult ShowProducts()
+        public IActionResult ShowProducts(string productName)
         {
             var products = db.Products.ToList();
+
+            if (!string.IsNullOrEmpty(productName))
+            {
+                products = products.Where(w => w.Name.ToLower().Contains(productName.ToLower())).ToList();
+            }
 
             return View(products);
         }

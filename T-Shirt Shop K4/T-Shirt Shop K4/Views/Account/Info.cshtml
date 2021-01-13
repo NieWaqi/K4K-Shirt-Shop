@@ -3,7 +3,57 @@
 @{
     Layout = "_Layout";
 }
-<h4>@Model.Name</h4>
-<h5>@Model.Email</h5>
-<h6>@Model.Phone</h6>
 
+<table>
+    @using (Html.BeginForm("SaveChanges", "Account", FormMethod.Get))
+    {
+        <tr>
+            <th>
+                <label for="yourPhone">Your phone</label>
+                <input name="changedPhone" type="text" id="yourPhone" value="@Model.Phone">
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <label for="yourName">Your name</label>
+                <input name="changedName" type="text" id="yourName" value="@Model.Name">
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <label for="yourEmail">Your email</label>
+                <input name="changedEmail" id="yourEmail" type="text" value="@Model.Email">
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <button class="btn waves-effect waves-light right" type="submit" name="action">
+                    Save Changes
+                </button>
+            </th>
+        </tr>
+    }
+    @using (Html.BeginForm("ChangePassword", "Account", FormMethod.Post))
+    {
+        <tr>
+            <th>
+                <label for="yourNewPassword">Your new password</label>
+                <input name="changedPassword" type="password" id="yourNewPassword">
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <label for="yourNewPasswordRepeat">Repeat your new password</label>
+                <input name="changedPasswordRepeat" type="password" id="yourNewPasswordRepeat">
+            </th>
+        </tr>
+
+        <tr>
+            <th>
+                <button class="btn waves-effect waves-light right red" type="submit" name="action">
+                    Change Password
+                </button>
+            </th>
+        </tr>
+    }
+</table>

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -14,7 +15,7 @@ namespace T_Shirt_Shop_K4.Controllers
         private readonly RoleManager<User> _roleManager;
 
         private string GetCurrentUserIdAsync() => _userManager.GetUserId(HttpContext.User);
-        
+
         public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
         {
             _userManager = userManager;
@@ -84,8 +85,9 @@ namespace T_Shirt_Shop_K4.Controllers
                     ModelState.AddModelError("", "Wrong login or password");
                 }
             }
-            RedirectToAction("Login", model);
-            return Ok("200. Login completed successfully");
+
+            return RedirectToAction("Login", model);
+            // return Ok("200. Login completed successfully");
         }
 
         [HttpPost("Logout")]
@@ -105,11 +107,63 @@ namespace T_Shirt_Shop_K4.Controllers
             var userModel = new UserViewModel
             {
                 Email = curUser.Email,
-                Name = curUser.name,
-                Phone = curUser.PhoneNumber
+                Login = curUser.name,
+                Phone = curUser.PhoneNumber,
+                Name = curUser.name
             };
-            
+
             return View(userModel);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> SaveChanges(string changedPhone, string changedName, string changedEmail)
+        {
+            var curUser = _userManager.Users.Single(w => w.Id == GetCurrentUserIdAsync());
+
+            if (!string.IsNullOrEmpty(changedName))
+            {
+                curUser.name = changedName;
+            }
+
+            if (!string.IsNullOrEmpty(changedPhone))
+            {
+                curUser.PhoneNumber = changedPhone;
+            }
+
+            if (!string.IsNullOrEmpty(changedEmail))
+            {
+                if (!_userManager.Users.Any(w => w.Email.ToLower() == changedEmail.ToLower()))
+                {
+                    curUser.Email = changedEmail;
+                    curUser.NormalizedEmail = changedEmail.ToUpper();
+                }
+            }
+
+            await _userManager.UpdateAsync(curUser);
+
+            return RedirectToAction("Info");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(string changedPassword, string changedPasswordRepeat)
+        {
+            var curUser = _userManager.Users.Single(w => w.Id == GetCurrentUserIdAsync());
+
+            var _passwordValidator =
+                HttpContext.RequestServices.GetService(typeof(IPasswordValidator<User>)) as IPasswordValidator<User>;
+            var _passwordHasher =
+                HttpContext.RequestServices.GetService(typeof(IPasswordHasher<User>)) as IPasswordHasher<User>;
+
+            IdentityResult result =
+                await _passwordValidator.ValidateAsync(_userManager, curUser, changedPassword);
+
+            if (result.Succeeded && changedPassword == changedPasswordRepeat)
+            {
+                curUser.PasswordHash = _passwordHasher.HashPassword(curUser, changedPassword);
+                await _userManager.UpdateAsync(curUser);
+            }
+
+            return RedirectToAction("Info");
         }
     }
 }

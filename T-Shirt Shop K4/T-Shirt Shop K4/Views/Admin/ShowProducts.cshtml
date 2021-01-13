@@ -59,7 +59,7 @@
                         </tr>
                     </table>
                 }
-                @using (Html.BeginForm("ShowUsers", "Admin", FormMethod.Get))
+                @using (Html.BeginForm("ShowProducts", "Admin", FormMethod.Get))
                 {
                     <table>
                         <tr>
@@ -92,7 +92,7 @@
                             <tr>
                                 <td>@product.Name</td>
                                 <td>@product.Description</td>
-                                <td>@product.Cost.ToString()</td>
+                                <td>@product.Cost.ToString()$</td>
                                 <td>@Html.Raw("<img style='width:50px; height:50px;' src=\"data:image/jpeg;base64," 
                                               + Convert.ToBase64String(product.Image) + "\" />")</td>
                                 @*<td>
