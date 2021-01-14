@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using T_Shirt_Shop_K4.Models;
+using T_Shirt_Shop_K4.Repository;
+using T_Shirt_Shop_K4.Repository.Interfaces;
 using T_Shirt_Shop_K4.Shared.Enums;
 
 namespace T_Shirt_Shop_K4.Controllers
@@ -14,12 +16,14 @@ namespace T_Shirt_Shop_K4.Controllers
     public class AdminController : Controller
     {
         private readonly UserManager<User> _userManager;
-        private ApplicationContext db;
+        private IRepository<Order> _orderRepository;
+        private IRepository<Product> _productRepository;
 
         public AdminController(UserManager<User> userManager, ApplicationContext context)
         {
+            _orderRepository = new OrderRepository(context);
+            _productRepository = new ProductRepository(context);
             _userManager = userManager;
-            db = context;
         }
 
         [HttpGet]
@@ -78,7 +82,7 @@ namespace T_Shirt_Shop_K4.Controllers
         [Authorize(Roles = "admin")]
         public IActionResult ShowOrders(string login, string productName, string productStatus, DateTime? orderDate)
         {
-            var orders = db.Orders.ToList();
+            var orders = _orderRepository.GetAll().ToList();
 
             if (!string.IsNullOrEmpty(login))
             {
@@ -114,7 +118,7 @@ namespace T_Shirt_Shop_K4.Controllers
         [Authorize(Roles = "admin")]
         public IActionResult ShowProducts(string productName)
         {
-            var products = db.Products.ToList();
+            var products = _productRepository.GetAll().ToList();
 
             if (!string.IsNullOrEmpty(productName))
             {
@@ -139,7 +143,7 @@ namespace T_Shirt_Shop_K4.Controllers
                     imageData = binaryReader.ReadBytes(Convert.ToInt32(productImage.Length));
                 }
 
-                Product product = new Product
+                var product = new T_Shirt_Shop_K4.Models.Product
                 {
                     Name = productName,
                     Description = productDescription,
@@ -147,9 +151,9 @@ namespace T_Shirt_Shop_K4.Controllers
                     Image = imageData
                 };
 
-                db.Products.Add(product);
+                _productRepository.Create(product);
 
-                db.SaveChanges();
+                _productRepository.Save();
             }
 
             return RedirectToAction("ShowProducts");

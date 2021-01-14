@@ -12,5 +12,10 @@ namespace T_Shirt_Shop_K4.Data
             : base(options)
         {
         }
+
+        public ApplicationDbContext()
+        {
+            
+        }
     }
 }

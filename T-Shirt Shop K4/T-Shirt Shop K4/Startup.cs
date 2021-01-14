@@ -12,7 +12,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using T_Shirt_Shop_K4.Data;
-using T_Shirt_Shop_K4.Models;
+using ApplicationContext = T_Shirt_Shop_K4.Models.ApplicationContext;
+using User = T_Shirt_Shop_K4.Models.User;
 
 namespace T_Shirt_Shop_K4
 {

@@ -98,16 +98,23 @@ namespace T_Shirt_Shop_K4.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        [HttpGet("Info")]
+        [HttpPost]
+        public JsonResult CheckEmail(string email)
+        {
+            if (_userManager.Users.Any(a => a.NormalizedEmail == email.ToUpper()))
+                return Json(false);
+            return Json(true);
+        }
+
+        [HttpGet]
         [Authorize]
         public IActionResult Info()
         {
             var curUser = _userManager.Users.Single(w => w.Id == GetCurrentUserIdAsync());
 
-            var userModel = new UserViewModel
+            var userModel = new ChangeUserDataViewModel
             {
                 Email = curUser.Email,
-                Login = curUser.name,
                 Phone = curUser.PhoneNumber,
                 Name = curUser.name
             };
@@ -115,37 +122,51 @@ namespace T_Shirt_Shop_K4.Controllers
             return View(userModel);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> SaveChanges(string changedPhone, string changedName, string changedEmail)
+        [HttpPost]
+        public async Task<IActionResult> Info(ChangeUserDataViewModel model)
         {
-            var curUser = _userManager.Users.Single(w => w.Id == GetCurrentUserIdAsync());
-
-            if (!string.IsNullOrEmpty(changedName))
+            if (ModelState.IsValid)
             {
-                curUser.name = changedName;
-            }
+                var curUser = _userManager.Users.Single(w => w.Id == GetCurrentUserIdAsync());
 
-            if (!string.IsNullOrEmpty(changedPhone))
-            {
-                curUser.PhoneNumber = changedPhone;
-            }
-
-            if (!string.IsNullOrEmpty(changedEmail))
-            {
-                if (!_userManager.Users.Any(w => w.Email.ToLower() == changedEmail.ToLower()))
+                if (!string.IsNullOrEmpty(model.Name))
                 {
-                    curUser.Email = changedEmail;
-                    curUser.NormalizedEmail = changedEmail.ToUpper();
+                    curUser.name = model.Name;
                 }
+
+                if (!string.IsNullOrEmpty(model.Phone))
+                {
+                    curUser.PhoneNumber = model.Phone;
+                }
+
+                if (!string.IsNullOrEmpty(model.Email))
+                {
+                    if (_userManager.Users.Any(a => a.NormalizedEmail == model.Email.ToUpper()))
+                    {
+                        ModelState.AddModelError(model.Email, "Email already in use");
+                        ModelState.AddModelError(String.Empty, "Email already in use");
+                    }
+                    else
+                    {
+                        curUser.Email = model.Email;
+                        curUser.NormalizedEmail = model.Email.ToUpper();
+                    }
+                }
+
+                await _userManager.UpdateAsync(curUser);
             }
 
-            await _userManager.UpdateAsync(curUser);
-
-            return RedirectToAction("Info");
+            return View(model);
         }
 
+        [HttpGet]
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
+        
         [HttpPost]
-        public async Task<IActionResult> ChangePassword(string changedPassword, string changedPasswordRepeat)
+        public async Task<IActionResult> ChangePassword(ChangeUserPasswordViewModel model)
         {
             var curUser = _userManager.Users.Single(w => w.Id == GetCurrentUserIdAsync());
 
@@ -155,15 +176,22 @@ namespace T_Shirt_Shop_K4.Controllers
                 HttpContext.RequestServices.GetService(typeof(IPasswordHasher<User>)) as IPasswordHasher<User>;
 
             IdentityResult result =
-                await _passwordValidator.ValidateAsync(_userManager, curUser, changedPassword);
+                await _passwordValidator.ValidateAsync(_userManager, curUser, model.Password);
 
-            if (result.Succeeded && changedPassword == changedPasswordRepeat)
+            if (result.Succeeded)
             {
-                curUser.PasswordHash = _passwordHasher.HashPassword(curUser, changedPassword);
+                curUser.PasswordHash = _passwordHasher.HashPassword(curUser, model.Password);
                 await _userManager.UpdateAsync(curUser);
             }
+            else
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
+            }
 
-            return RedirectToAction("Info");
+            return View();
         }
     }
 }

@@ -1,28 +1,32 @@
-﻿@model UserViewModel
+﻿@model ChangeUserDataViewModel
 
 @{
     Layout = "_Layout";
 }
 
 <table>
-    @using (Html.BeginForm("SaveChanges", "Account", FormMethod.Get))
+    @using (Html.BeginForm("Info", "Account", FormMethod.Post))
     {
+        <div asp-validation-summary="ModelOnly"></div>
         <tr>
             <th>
-                <label for="yourPhone">Your phone</label>
-                <input name="changedPhone" type="text" id="yourPhone" value="@Model.Phone">
+                <label asp-for="Phone"></label>
+                <input asp-for="Phone" type="text" id="yourPhone" value="@Model.Phone">
+                <span asp-validation-for="Phone"></span>
             </th>
         </tr>
         <tr>
             <th>
-                <label for="yourName">Your name</label>
-                <input name="changedName" type="text" id="yourName" value="@Model.Name">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" type="text" id="yourName" value="@Model.Name">
+                <span asp-validation-for="Name"></span>
             </th>
         </tr>
         <tr>
             <th>
-                <label for="yourEmail">Your email</label>
-                <input name="changedEmail" id="yourEmail" type="text" value="@Model.Email">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" id="yourEmail" type="text" value="@Model.Email">
+                <span asp-validation-for="Email"></span>
             </th>
         </tr>
         <tr>
@@ -33,27 +37,23 @@
             </th>
         </tr>
     }
-    @using (Html.BeginForm("ChangePassword", "Account", FormMethod.Post))
+    @using (Html.BeginForm("ChangePassword", "Account", FormMethod.Get))
     {
         <tr>
             <th>
-                <label for="yourNewPassword">Your new password</label>
-                <input name="changedPassword" type="password" id="yourNewPassword">
-            </th>
-        </tr>
-        <tr>
-            <th>
-                <label for="yourNewPasswordRepeat">Repeat your new password</label>
-                <input name="changedPasswordRepeat" type="password" id="yourNewPasswordRepeat">
-            </th>
-        </tr>
-
-        <tr>
-            <th>
-                <button class="btn waves-effect waves-light right red" type="submit" name="action">
+                <button class="btn waves-effect waves-light left red" type="submit" name="action">
                     Change Password
                 </button>
             </th>
         </tr>
     }
+    <tr>
+        <th>
+            <form method="post" asp-controller="Account" asp-action="Logout">
+                <button class="btn waves-effect waves-light left orange" type="submit" name="action">
+                    LogOut
+                </button>
+            </form>
+        </th>
+    </tr>
 </table>
