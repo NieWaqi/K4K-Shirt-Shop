@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using T_Shirt_Shop_K4.Data;
 using ApplicationContext = T_Shirt_Shop_K4.Models.ApplicationContext;
 using User = T_Shirt_Shop_K4.Models.User;
@@ -51,8 +52,21 @@ namespace T_Shirt_Shop_K4
             services.AddSwaggerGen(); // swagg
         }
 
-        public void Configure(IApplicationBuilder app)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {   
+            app.UseExceptionHandler("/Error");
+            app.UseHsts();
+            
+            app.UseStatusCodePages(async context =>
+            {
+                context.HttpContext.Response.ContentType = "text/plain";
+
+                await context.HttpContext.Response.WriteAsync(
+                    "Status code page, status code: " +
+                    context.HttpContext.Response.StatusCode);
+            });
+            
+            
             app.UseDeveloperExceptionPage();
 
             app.UseHttpsRedirection();

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using T_Shirt_Shop_K4.Models;
@@ -35,6 +36,7 @@ namespace T_Shirt_Shop_K4.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult MakeOrder(int? ProductId, string Quantity)
         {
             Order order = new Order

@@ -19,11 +19,17 @@ namespace T_Shirt_Shop_K4.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index(int? id = 1)
+        public IActionResult Index(string search, int? id = 1)
         {
+            var products = db.Products.ToList();
+            if (!string.IsNullOrEmpty(search))
+            {
+                products = products.Where(w => w.Name.ToLower().Contains(search.ToLower())).ToList();
+            }
+
             var model = new MainProductsViewModell
             {
-                Products = db.Products
+                Products = products
                     .Skip(36 * (Convert.ToInt32(id - 1)))
                     .Take(36)
                     .ToList(),

@@ -55,13 +55,13 @@ namespace T_Shirt_Shop_K4.Controllers
             return Ok("200. Registration completed successfully");
         }
 
-        [HttpGet("Login")]
+        [HttpGet("Account/Login")]
         public IActionResult Login(string returnUrl = null)
         {
             return View(new Models.LoginVIewModel {ReturnUrl = returnUrl});
         }
 
-        [HttpPost("Login")]
+        [HttpPost("Account/Login")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(Models.LoginVIewModel model)
         {
