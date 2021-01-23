@@ -131,7 +131,7 @@ namespace T_Shirt_Shop_K4.Controllers
         [HttpPost]
         [Authorize(Roles = "admin")]
         public IActionResult AddProduct(string productName, string productDescription, string productCost,
-            IFormFile productImage)
+            IFormFile productImage, string male, string female)
         {
             if (productImage != null && !string.IsNullOrEmpty(productName) &&
                 !string.IsNullOrEmpty(productDescription) && decimal.Parse(productCost.Replace('.',',')) > 0)
@@ -143,12 +143,23 @@ namespace T_Shirt_Shop_K4.Controllers
                     imageData = binaryReader.ReadBytes(Convert.ToInt32(productImage.Length));
                 }
 
+                string Gender = "";
+                if (!string.IsNullOrEmpty(male) && male == "on")
+                {
+                    Gender += "Male";
+                }
+
+                if (!string.IsNullOrEmpty(female) && female == "on")
+                {
+                    Gender += "Female";
+                }
                 var product = new T_Shirt_Shop_K4.Models.Product
                 {
                     Name = productName,
                     Description = productDescription,
                     Cost = decimal.Parse(productCost.Replace('.',',')),
-                    Image = imageData
+                    Image = imageData,
+                    Gender = Gender
                 };
 
                 _productRepository.Create(product);
@@ -156,6 +167,17 @@ namespace T_Shirt_Shop_K4.Controllers
                 _productRepository.Save();
             }
 
+            return RedirectToAction("ShowProducts");
+        }
+        
+        [HttpPost]
+        [Authorize(Roles = "admin")]
+        public IActionResult DeleteProduct(int? id)
+        {
+            _productRepository.Delete(Convert.ToInt32(id));
+
+            _productRepository.Save();
+            
             return RedirectToAction("ShowProducts");
         }
     }

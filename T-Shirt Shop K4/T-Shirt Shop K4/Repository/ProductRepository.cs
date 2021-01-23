@@ -37,7 +37,7 @@ namespace T_Shirt_Shop_K4.Repository
 
         public void Delete(int id)
         {
-            Product prod = db.Products.Find(id);
+            Product prod = db.Products.Find((long)id);
             if (prod != null)
                 db.Products.Remove(prod);
         }

@@ -14,6 +14,16 @@
                     <input name="search" id="searchInput" type="text">
                 </th>
                 <th>
+                    <label>
+                        <input name="male" type="checkbox" class="filled-in"/>
+                        <span>Male</span>
+                    </label>
+                    <label>
+                        <input name="female" type="checkbox" class="filled-in"/>
+                        <span>Female</span>
+                    </label>
+                </th>
+                <th>
                     <button class="btn waves-effect waves-light right blue" type="submit" name="action">
                         Search
                     </button>
@@ -51,7 +61,7 @@
                                 <h4>@prod.Name</h4>
                                 <p>@prod.Description</p>
                                 <p>
-                                    <input readonly value=@(prod.Cost + "$")>
+                                    <input readonly value=@(prod.Cost.ToString().Replace(',', '.') + "$")>
                                 </p>
                                 <div class="col m8 offset-m2 s12 z-depth-2">
                                     <input name="Quantity" value="1" type="number" onchange="nChanged()" min="1" max="500" id="amount" class="validate">
@@ -60,7 +70,13 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                @*<a href="#!" class="modal-close waves-effect waves-green btn-small">Add to cart</a>*@
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <p class="left">Enter your address</p>
+                                <input required name="address" id="address" type="text">
                                 <button type="submit" value="Create" class="purple btn .light-purple.accent-3 waves-effect waves-light">
                                     Add to card
                                 </button>
@@ -75,11 +91,11 @@
 </div>
 <div class="center">
     <ul class="pagination">
-        <li class="disabled">
-            <a href="#!">
-                <i class="material-icons"><</i>
-            </a>
-        </li>
+        @* <li class="disabled"> *@
+        @*     <a href="#!"> *@
+        @*         <i class="material-icons"><</i> *@
+        @*     </a> *@
+        @* </li> *@
         @if (Model.CurrentPage > 5)
         {
             @for (long num = Model.CurrentPage - 5; num <= Model.MaxPages && num <= Model.CurrentPage + 5; num++)
@@ -116,11 +132,11 @@
                 }
             }
         }
-        <li class="waves-effect">
-            <a href="#!">
-                <i class="material-icons">></i>
-            </a>
-        </li>
+        @* <li class="waves-effect"> *@
+        @*     <a href="#!"> *@
+        @*         <i class="material-icons">></i> *@
+        @*     </a> *@
+        @* </li> *@
     </ul>
 </div>
 <script >
@@ -128,7 +144,7 @@
     $(":input").bind('keyup mouseup', function () {
         let price = $(this).parent().prev().children().val();
         price = price.slice(0, price.length)
-        $(this).next().next().text("Total price: " + (parseInt($(this).val()) * parseInt(price))+ "$")
+        $(this).next().next().text("Total price: " + parseFloat((parseFloat($(this).val()) * parseFloat(price))+ "$")).toFixed(2)
     })
     }
     </script>

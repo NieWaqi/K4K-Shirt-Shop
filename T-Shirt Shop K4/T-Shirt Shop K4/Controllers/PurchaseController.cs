@@ -37,12 +37,11 @@ namespace T_Shirt_Shop_K4.Controllers
 
         [HttpPost]
         [Authorize]
-        public ActionResult MakeOrder(int? ProductId, string Quantity)
+        public ActionResult MakeOrder(int? ProductId, string Quantity, string address)
         {
             Order order = new Order
             {
-                //TODO: Address
-                Address = "TestAddress",
+                Address = address,
                 ProductId = (long) ProductId,
                 Product = db.Products.FirstOrDefault(w => w.Id == ProductId),
                 ProductName = db.Products.FirstOrDefault(w => w.Id == ProductId)?.Name,

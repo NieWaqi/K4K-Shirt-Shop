@@ -31,25 +31,35 @@
                         </thead>
                     </table>
                 }
-                @using (Html.BeginForm("AddProduct", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                @using (Html.BeginForm("AddProduct", "Admin", FormMethod.Post, new {enctype = "multipart/form-data"}))
                 {
                     <table>
                         <tr>
                             <th>
                                 <label for="nameInput">Product Name</label>
-                                <input name="productName" id="nameInput" type="text">
+                                <input required="required" name="productName" id="nameInput" type="text">
                             </th>
                             <th>
                                 <label for="descriptionInput">Product Description</label>
-                                <input name="productDescription" id="descriptionInput" type="text">
+                                <input required="required" name="productDescription" id="descriptionInput" type="text">
                             </th>
                             <th>
                                 <label for="costInput">Product Cost</label>
-                                <input name="productCost" id="costInput" step=".01" min="0.01" max="999999" type="number">
+                                <input required="required" name="productCost" id="costInput" step=".01" min="0.01" max="999999" type="number">
                             </th>
                             <th>
                                 <label for="ImageInput">Product Image</label>
-                                <input id="ImageInput" type="file" name="productImage">
+                                <input required="required" id="ImageInput" type="file" name="productImage">
+                            </th>
+                            <th>
+                                <label>
+                                    <input name="male" type="checkbox" class="filled-in"/>
+                                    <span>Male</span>
+                                </label>
+                                <label>
+                                    <input name="female" type="checkbox" class="filled-in"/>
+                                    <span>Female</span>
+                                </label>
                             </th>
                             <th>
                                 <button class="btn waves-effect waves-light" type="submit" name="action">
@@ -80,6 +90,7 @@
                     <tr>
                         <th>Product Name</th>
                         <th>Product Description</th>
+                        <th>Product Gender</th>
                         <th>Product Cost</th>
                         <th>Product Photo</th>
                     </tr>
@@ -92,9 +103,20 @@
                             <tr>
                                 <td>@product.Name</td>
                                 <td>@product.Description</td>
+                                <td>@product.Gender</td>
                                 <td>@product.Cost.ToString()$</td>
-                                <td>@Html.Raw("<img style='width:50px; height:50px;' src=\"data:image/jpeg;base64," 
-                                              + Convert.ToBase64String(product.Image) + "\" />")</td>
+                                <td>
+                                    @Html.Raw("<img style='width:50px; height:50px;' src=\"data:image/jpeg;base64,"
+                                              + Convert.ToBase64String(product.Image) + "\" />")
+                                </td>
+                                <td>
+                                    @using (Html.BeginForm("DeleteProduct", "Admin", routeValues: new {id = product.Id.ToString()}, FormMethod.Post))
+                                    {
+                                        <button type="submit" value="Create" class="btn red waves-effect waves-light">
+                                            Delete
+                                        </button>
+                                    }
+                                </td>
                                 @*<td>
                     <a class="waves-effect waves-light btn modal-trigger" href=@("#modal" + order.Id)>Change quantity</a>
 
@@ -126,6 +148,7 @@
                         }
                     }
                     else
+
                     {
                         <h3 class="red-text center">Nothing found</h3>
                     }
