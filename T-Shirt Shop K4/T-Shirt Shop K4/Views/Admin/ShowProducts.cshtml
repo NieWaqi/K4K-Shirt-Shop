@@ -52,6 +52,19 @@
                                 <input required="required" id="ImageInput" type="file" name="productImage">
                             </th>
                             <th>
+                                <label>Select Size</label>
+                                <select name="size">
+                                    <option value="" disabled selected>Choose your option</option>
+                                    <option value="XS">XS</option>
+                                    <option value="S">S</option>
+                                    <option value="M">M</option>
+                                    <option value="L">L</option>
+                                    <option value="XL">XL</option>
+                                    <option value="XXL">XXL</option>
+                                    <option value="XXXL">XXXL</option>
+                                </select>
+                            </th>
+                            <th>
                                 <label>
                                     <input name="male" type="checkbox" class="filled-in"/>
                                     <span>Male</span>
@@ -90,6 +103,7 @@
                     <tr>
                         <th>Product Name</th>
                         <th>Product Description</th>
+                        <th>Product Size</th>
                         <th>Product Gender</th>
                         <th>Product Cost</th>
                         <th>Product Photo</th>
@@ -103,6 +117,7 @@
                             <tr>
                                 <td>@product.Name</td>
                                 <td>@product.Description</td>
+                                <td>@product.Size</td>
                                 <td>@product.Gender</td>
                                 <td>@product.Cost.ToString()$</td>
                                 <td>

@@ -8,6 +8,7 @@ namespace T_Shirt_Shop_K4.Models
         
         public string Name { get; set; }
         public string Gender { get; set; }
+        public string Size { get; set; }
         public string Description { get; set; }
         public decimal Cost { get; set; }
         

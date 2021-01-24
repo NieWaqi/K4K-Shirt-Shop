@@ -131,7 +131,7 @@ namespace T_Shirt_Shop_K4.Controllers
         [HttpPost]
         [Authorize(Roles = "admin")]
         public IActionResult AddProduct(string productName, string productDescription, string productCost,
-            IFormFile productImage, string male, string female)
+            IFormFile productImage, string male, string female, string size)
         {
             if (productImage != null && !string.IsNullOrEmpty(productName) &&
                 !string.IsNullOrEmpty(productDescription) && decimal.Parse(productCost.Replace('.',',')) > 0)
@@ -153,13 +153,21 @@ namespace T_Shirt_Shop_K4.Controllers
                 {
                     Gender += "Female";
                 }
+
+                string curSize = "";
+                if (!string.IsNullOrEmpty(size))
+                {
+                    curSize = size;
+                }
+
                 var product = new T_Shirt_Shop_K4.Models.Product
                 {
                     Name = productName,
                     Description = productDescription,
                     Cost = decimal.Parse(productCost.Replace('.',',')),
                     Image = imageData,
-                    Gender = Gender
+                    Gender = Gender,
+                    Size = curSize
                 };
 
                 _productRepository.Create(product);
