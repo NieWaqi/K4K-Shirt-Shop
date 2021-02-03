@@ -72,7 +72,7 @@
                     <!-- Modal Structure -->
                     @using (Html.BeginForm("MakeOrder", "Purchase", routeValues: new {ProductId = prod.Id.ToString()}, FormMethod.Post))
                     {
-                        <div id=@("modal" + prod.Id) class="modal">
+                        <div id=@("modal" + prod.Id) class="modal" style="height: 53%">
                             <div class="modal-content">
                                 <h4>@prod.Name</h4>
                                 <p>@prod.Description</p>

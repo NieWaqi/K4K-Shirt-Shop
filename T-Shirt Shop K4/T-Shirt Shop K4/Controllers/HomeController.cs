@@ -49,13 +49,14 @@ namespace T_Shirt_Shop_K4.Controllers
             var model = new MainProductsViewModell
             {
                 Products = products
-                    .Skip(36 * (Convert.ToInt32(id - 1)))
-                    .Take(36)
+                    .Skip(30 * (Convert.ToInt32(id - 1)))
+                    .Take(30)
                     .ToList(),
 
                 CurrentPage = Convert.ToInt32(id),
-                MaxPages = ((int)db.Products.Count() / 36) + 1
+                MaxPages = ((int)db.Products.Count() / 30) + 1
             };
+            
             
             return View(model);
         }
