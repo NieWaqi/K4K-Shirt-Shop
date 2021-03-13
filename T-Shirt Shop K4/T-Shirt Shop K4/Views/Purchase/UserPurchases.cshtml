@@ -1,0 +1,40 @@
+﻿@using System.Globalization
+@model List<Order>
+
+@{
+    Layout = "_Layout";
+}
+<h1 class="center">Your orders</h1>
+<div class="row container" style="min-height:100vh">
+    <div class="col s12">
+        <div class="col m12 z-depth-2 white darken-4">
+            <table>
+                <thead>
+                <tr>
+                    <th>Item name</th>
+                    <th>Order date</th>
+                    <th>Item quantity</th>
+                    <th>Order price</th>
+                    <th>Order status</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                @foreach (var order in Model.OrderByDescending(o => o.OrderDate))
+                {
+                    <tr>
+                        <td>@order.Product.Name</td>
+                        <th>@order.OrderDate.ToString(CultureInfo.InvariantCulture)</th>
+                        <td>@order.Quantity.ToString()</td>
+                        <td>@((order.Product.Cost * order.Quantity).ToString(CultureInfo.InvariantCulture))$</td>
+                        <td>@order.OrderStatus.ToString()</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script >
+M.AutoInit();
+</script>

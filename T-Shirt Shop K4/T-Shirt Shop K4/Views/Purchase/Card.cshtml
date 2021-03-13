@@ -4,7 +4,7 @@
 @{
     Layout = "_Layout";
 }
-<h1 class="center">Your orders</h1>
+<h1 class="center">Your current orders</h1>
 <div class="row container" style="min-height:100vh">
     <div class="col s12">
         <div class="col m12 z-depth-2 white darken-4">
@@ -15,11 +15,11 @@
                     <th>Item quantity</th>
                     <th>Order price</th>
                     <th>Order status</th>
+                    <th>Track Order</th>
                     <th>Quantity</th>
                     <th>Delete</th>
                 </tr>
                 </thead>
-
                 <tbody>
                 @foreach (var order in Model)
                 {
@@ -28,6 +28,21 @@
                         <td>@order.Quantity.ToString()</td>
                         <td>@((order.Product.Cost * order.Quantity).ToString(CultureInfo.InvariantCulture))$</td>
                         <td>@order.OrderStatus.ToString()</td>
+                        <td>
+                            <a class="waves-effect orange waves-light btn modal-trigger" href=@("#modalo" + order.Id)>Track</a>
+
+                            <div id=@("modalo" + order.Id) class="modal">
+                                <div class="modal-content">
+                                    <h4>Track Order</h4>
+
+                                    <p>Current order status: <b>@order.OrderStatus.ToString()</b></p>
+                                    <p>Approximate arrival date: <b>@order.OrderDate.AddMonths(1).ToString(CultureInfo.InvariantCulture)</b></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                </div>
+                            </div>
+                        </td>
                         <td>
                             <a class="waves-effect waves-light btn modal-trigger" href=@("#modal" + order.Id)>Change quantity</a>
 

@@ -24,7 +24,10 @@ namespace T_Shirt_Shop_K4.Controllers
 
         public IActionResult Card()
         {
-            var model = db.Orders.Where(w => w.User.Id == GetCurrentUserIdAsync()).ToList();
+            var model = db.Orders.Where(w =>
+                    w.User.Id == GetCurrentUserIdAsync() && w.OrderStatus != Enums.OrderStatus.Received &&
+                    w.OrderStatus != Enums.OrderStatus.Cancelled)
+                .ToList();
 
             foreach (var order in model)
             {
@@ -33,6 +36,41 @@ namespace T_Shirt_Shop_K4.Controllers
             }
 
             return View(model);
+        }
+
+        [Authorize]
+        public IActionResult UserPurchases()
+        {
+            var model = db.Orders.Where(w =>
+                    w.User.Id == GetCurrentUserIdAsync())
+                .ToList();
+
+            foreach (var order in model)
+            {
+                order.User = _userManager.Users.Single(w => w.Id == GetCurrentUserIdAsync());
+                order.Product = db.Products.FirstOrDefault(w => w.Id == order.ProductId);
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public IActionResult LeaveComment(int? ProductId, string Comment)
+        {
+            var comment = new Comment
+            {
+                Product = db.Products.FirstOrDefault(w => w.Id == ProductId),
+                Text = Comment,
+                User = _userManager.Users.Single(w => w.Id == GetCurrentUserIdAsync()),
+                UserName = _userManager.Users.Single(w => w.Id == GetCurrentUserIdAsync()).name,
+                SubmitDate = DateTime.UtcNow
+            };
+
+            db.Comments.Add(comment);
+            db.SaveChanges();
+            
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpPost]
@@ -81,7 +119,7 @@ namespace T_Shirt_Shop_K4.Controllers
             order.Quantity = quantity;
 
             db.SaveChanges();
-            
+
             return RedirectToAction("Card");
         }
     }

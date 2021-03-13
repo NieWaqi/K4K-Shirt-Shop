@@ -54,9 +54,9 @@ namespace T_Shirt_Shop_K4.Controllers
                     .ToList(),
 
                 CurrentPage = Convert.ToInt32(id),
-                MaxPages = ((int)db.Products.Count() / 30) + 1
+                MaxPages = ((int)db.Products.Count() / 30) + 1,
+                Comments = db.Comments.ToList(),
             };
-            
             
             return View(model);
         }
