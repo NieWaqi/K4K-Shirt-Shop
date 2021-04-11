@@ -19,7 +19,7 @@ namespace T_Shirt_Shop_K4.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index(string search, string male, string female, string size, int? id = 1)
+        public IActionResult Index(string search, string male, string female, string size,  string ord, int? id = 1)
         {
             string Gender = "";
             if (!string.IsNullOrEmpty(male) && male == "on")
@@ -44,6 +44,18 @@ namespace T_Shirt_Shop_K4.Controllers
             if (!string.IsNullOrEmpty(size))
             {
                 products = products.Where(w => w.Size == size).ToList();
+            }
+
+            if (!string.IsNullOrEmpty(ord))
+            {
+                if (ord == "h")
+                {
+                    products = products.OrderByDescending(o => o.Cost).ToList();
+                }
+                else if (ord == "l")
+                {
+                    products = products.OrderBy(o => o.Cost).ToList();
+                }
             }
             
             var model = new MainProductsViewModell

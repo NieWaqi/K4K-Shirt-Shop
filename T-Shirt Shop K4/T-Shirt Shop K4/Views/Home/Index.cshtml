@@ -24,7 +24,7 @@
                     </label>
                 </th>
                 <th>
-                    <label>Select data</label>
+                    <label>Select size</label>
                     <select name="size">
                         <option value="" disabled selected>Choose your option</option>
                         <option value="XS">XS</option>
@@ -34,6 +34,14 @@
                         <option value="XL">XL</option>
                         <option value="XXL">XXL</option>
                         <option value="XXXL">XXXL</option>
+                    </select>
+                </th>
+                <th>
+                    <label>Select price</label>
+                    <select name="ord">
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="h">Price to low</option>
+                        <option value="l">Price to high</option>
                     </select>
                 </th>
                 <th>
@@ -100,7 +108,7 @@
                             <br>
                         </div>
                     }
-                    
+
                     <br>
                     <a class="waves-effect waves-light btn modal-trigger" href=@("#modalo" + prod.Id)>Feedbacks</a>
                     <!-- Modal Structure -->
@@ -148,11 +156,6 @@
 </div>
 <div class="center">
     <ul class="pagination">
-        @* <li class="disabled"> *@
-        @*     <a href="#!"> *@
-        @*         <i class="material-icons"><</i> *@
-        @*     </a> *@
-        @* </li> *@
         @if (Model.CurrentPage > 5)
         {
             @for (long num = Model.CurrentPage - 5; num <= Model.MaxPages && num <= Model.CurrentPage + 5; num++)
@@ -189,11 +192,6 @@
                 }
             }
         }
-        @* <li class="waves-effect"> *@
-        @*     <a href="#!"> *@
-        @*         <i class="material-icons">></i> *@
-        @*     </a> *@
-        @* </li> *@
     </ul>
 </div>
 <script >
